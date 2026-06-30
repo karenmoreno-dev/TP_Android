@@ -89,6 +89,8 @@ public class ListadoContactos extends AppCompatActivity {
                                     + "\nApellido: " + contactoSeleccionado.getApellido()
                                     + "\nEmail: " + contactoSeleccionado.getEmail()+ " (" + contactoSeleccionado.getTipoEmail() + ")"
                                     + "\nTeléfono: " + contactoSeleccionado.getTelefono()+" (" + contactoSeleccionado.getTipoTelefono() + ")"
+                                    + "\nDirección: " + contactoSeleccionado.getDireccion()
+                                    + "\nFecha de Nacimiento: " + contactoSeleccionado.getFechaNacimiento()
                                     + "\nNivel de Estudios: " + contactoSeleccionado.getNivelEstudios()
                                     + "\nIntereses: " + contactoSeleccionado.getIntereses()
                                     + "\n¿Recibe Información?: " + (contactoSeleccionado.getRecibeInformacion() == 1 ? "SI" : "NO")
@@ -96,7 +98,6 @@ public class ListadoContactos extends AppCompatActivity {
                     )
                     .setPositiveButton("Aceptar", null)
                     .show();
-
         });
     }
 
