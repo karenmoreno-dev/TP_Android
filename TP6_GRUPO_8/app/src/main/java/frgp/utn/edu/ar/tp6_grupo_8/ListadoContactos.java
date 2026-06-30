@@ -87,8 +87,11 @@ public class ListadoContactos extends AppCompatActivity {
 
                             "Nombre: " + contactoSeleccionado.getNombre()
                                     + "\nApellido: " + contactoSeleccionado.getApellido()
-                                    + "\nEmail: " + contactoSeleccionado.getEmail()
-                                    + "\nTeléfono: " + contactoSeleccionado.getTelefono()
+                                    + "\nEmail: " + contactoSeleccionado.getEmail()+ " (" + contactoSeleccionado.getTipoEmail() + ")"
+                                    + "\nTeléfono: " + contactoSeleccionado.getTelefono()+" (" + contactoSeleccionado.getTipoTelefono() + ")"
+                                    + "\nNivel de Estudios: " + contactoSeleccionado.getNivelEstudios()
+                                    + "\nIntereses: " + contactoSeleccionado.getIntereses()
+                                    + "\n¿Recibe Información?: " + (contactoSeleccionado.getRecibeInformacion() == 1 ? "SI" : "NO")
 
                     )
                     .setPositiveButton("Aceptar", null)
