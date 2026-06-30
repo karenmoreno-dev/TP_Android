@@ -34,6 +34,31 @@ public class AgregarContactosMainActivity extends AppCompatActivity {
     private Spinner spTipoTelefono, spTipoEmail;
 
     @Override
+    protected void onResume() {
+        super.onResume();
+
+        // limpia campos
+        if (etNombre != null) etNombre.setText("");
+        if (etApellido != null) etApellido.setText("");
+        if (etTelefono != null) etTelefono.setText("");
+        if (etEmail != null) etEmail.setText("");
+        if (etDireccion != null) etDireccion.setText("");
+        if (etFechaNacimiento != null) etFechaNacimiento.setText("");
+
+
+        etNombre.setError(null);
+        etApellido.setError(null);
+        etTelefono.setError(null);
+        etEmail.setError(null);
+        etDireccion.setError(null);
+        etFechaNacimiento.setError(null);
+
+        // reseteamos los Spinners a la posición 0 ("Seleccione una opcion")
+        if (spTipoTelefono != null) spTipoTelefono.setSelection(0);
+        if (spTipoEmail != null) spTipoEmail.setSelection(0);
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);

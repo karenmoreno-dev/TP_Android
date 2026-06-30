@@ -242,6 +242,7 @@ public class MasDatosDeContacto extends AppCompatActivity {
                 "Contacto guardado correctamente",
                 Toast.LENGTH_SHORT
         ).show();
+        finish();
 
 
     }
