@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:background="#F5F5F5">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FORMULARIO DE CONTACTO"
+            android:textColor="#707070"
+            android:textSize="20sp"
+            android:textStyle="bold"
+             />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="A continuación, por favor se pide completar más datos personales."
+            android:textColor="#8A8A8A"
+            android:textSize="15sp"
+            android:layout_marginBottom="24dp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NIVEL DE ESTUDIOS ALCANZADOS"
+            android:textColor="#8A8A8A"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"/>
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_marginBottom="20dp">
+
+            <RadioGroup
+                android:id="@+id/rgEstudios"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="16dp">
+
+                <RadioButton
+                    android:id="@+id/rbPrimarioIncompleto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Primario incompleto"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/rbPrimarioCompleto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Primario completo"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+                <RadioButton
+                    android:id="@+id/rbSecundarioIncompleto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Secundario incompleto"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp"/>
+                <RadioButton
+                    android:id="@+id/rbSecundarioCompleto"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Secundario Completo"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp"/>
+                <RadioButton
+                    android:id="@+id/rbOtros"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Otros"
+                    android:textSize="16sp"
+                    android:padding="8dp"
+                    android:layout_marginBottom="8dp"/>
+
+            </RadioGroup> </androidx.cardview.widget.CardView>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="INTERESES"
+            android:textColor="#8A8A8A"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="4dp"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="12dp"
+            app:cardElevation="0dp"
+            app:cardBackgroundColor="#FFFFFF"
+            android:layout_marginBottom="20dp">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <CheckBox
+                        android:id="@+id/cbDeporte"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Deporte"/>
+
+
+                    <CheckBox
+                        android:id="@+id/cbMusica"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Musica"/>
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+
+                    <CheckBox
+                        android:id="@+id/cbArte"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Arte"/>
+
+
+                    <CheckBox
+                        android:id="@+id/cbTecnologia"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Tecnologia"/>
+
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="24dp"
+        android:layout_marginStart="4dp">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="DESEA RECIBIR INFORMACIÓN?"
+            android:textColor="#212121"
+            android:textSize="16sp" />
+        <Switch
+            android:id="@+id/switchSiNo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:text="SI" />
+    </LinearLayout>
+
+        <Button
+            android:id="@+id/btnGuardar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_gravity="end"
+            android:text="GUARDAR" />
+
+    </LinearLayout>
+</ScrollView>
