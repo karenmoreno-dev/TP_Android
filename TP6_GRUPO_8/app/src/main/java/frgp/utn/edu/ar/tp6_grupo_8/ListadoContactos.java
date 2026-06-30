@@ -77,15 +77,19 @@ public class ListadoContactos extends AppCompatActivity {
 
         lvContactos.setOnItemClickListener((parent, view, position, id) -> {
 
-            String contactoSeleccionado = contactos.get(position);
+
+            Contacto contactoSeleccionado = lista.get(position);
+
 
             new androidx.appcompat.app.AlertDialog.Builder(this)
                     .setTitle("Detalle del contacto")
                     .setMessage(
-                            "Contacto seleccionado:\n\n" +
-                                    contactoSeleccionado +
-                                    "\n\nActualmente se muestran los datos disponibles. " +
-                                    "Al integrar SQLite se visualizará la información completa del contacto."
+
+                            "Nombre: " + contactoSeleccionado.getNombre()
+                                    + "\nApellido: " + contactoSeleccionado.getApellido()
+                                    + "\nEmail: " + contactoSeleccionado.getEmail()
+                                    + "\nTeléfono: " + contactoSeleccionado.getTelefono()
+
                     )
                     .setPositiveButton("Aceptar", null)
                     .show();

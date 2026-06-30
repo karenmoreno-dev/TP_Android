@@ -5,7 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.view.View;
-
+import android.database.DatabaseUtils;
 import java.util.ArrayList;
 
 import entidad.Contacto;
@@ -96,6 +96,37 @@ public class OpenHelper extends SQLiteOpenHelper {
                         cursor.getString(cursor.getColumnIndexOrThrow(COL_NIVEL_ESTUDIOS)));
                 contacto.setRecibeInformacion(
                         cursor.getInt(cursor.getColumnIndexOrThrow(COL_RECIBE_INFORMACION)));
+                String interesesTexto =
+                        cursor.getString(
+                                cursor.getColumnIndexOrThrow(COL_INTERESES)
+                        );
+
+
+                ArrayList<String> intereses =
+                        new ArrayList<>();
+
+
+                if(interesesTexto != null && !interesesTexto.isEmpty()){
+
+                    interesesTexto =
+                            interesesTexto.replace("[","")
+                                    .replace("]","");
+
+
+                    String[] separados =
+                            interesesTexto.split(",");
+
+
+                    for(String i : separados){
+
+                        intereses.add(i.trim());
+
+                    }
+
+                }
+
+
+                contacto.setIntereses(intereses);
 
                 lista.add(contacto);
             } while (cursor.moveToNext());
@@ -103,6 +134,29 @@ public class OpenHelper extends SQLiteOpenHelper {
         cursor.close();
         bd.close();
         return lista;
+    }
+
+    public int cantidadContactos(){
+
+
+        SQLiteDatabase bd =
+                this.getReadableDatabase();
+
+
+
+        int cantidad = (int) DatabaseUtils.queryNumEntries(
+                bd,
+                TABLA_CONTACTOS
+        );
+
+
+
+        bd.close();
+
+
+
+        return cantidad;
+
     }
 
 }

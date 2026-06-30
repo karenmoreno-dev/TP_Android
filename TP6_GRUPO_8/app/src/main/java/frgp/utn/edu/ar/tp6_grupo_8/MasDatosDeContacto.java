@@ -8,11 +8,18 @@ import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.Toast;
 
+import android.content.ContentValues;
+import android.database.sqlite.SQLiteDatabase;
+
+
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
+import java.util.ArrayList;
+import OpenHelper.OpenHelper;
 
 public class MasDatosDeContacto extends AppCompatActivity {
     private String nombre, apellido,email, telefono, direccion, fechaNacimiento, tipoTelefono, tipoEmail;
@@ -27,11 +34,15 @@ public class MasDatosDeContacto extends AppCompatActivity {
 
     private Switch switchSiNo;
 
+    private OpenHelper dbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         // vinculacion con XML
         setContentView(R.layout.activity_mas_datos_de_contacto);
+
+        dbHelper = new OpenHelper(this);
 
         //
         Bundle extras = getIntent().getExtras();
@@ -78,35 +89,43 @@ public class MasDatosDeContacto extends AppCompatActivity {
         btnGuardar = findViewById(R.id.btnGuardar);
 
         btnGuardar.setOnClickListener(v -> {
+
             if (Validaciones()) {
-               // luego agregar un metodo guardarContactoBD();
+
+                guardarContactoBD();
+
             }
         });
 
     }
 
-    private String obtenerIntereses(){
+    private ArrayList<String> obtenerIntereses(){
 
-        String intereses = "";
+        ArrayList<String> intereses = new ArrayList<>();
 
 
         if(cbDeporte.isChecked()){
-            intereses += "Deporte ";
+            intereses.add("Deporte");
         }
+
 
         if(cbMusica.isChecked()){
-            intereses += "Musica ";
+            intereses.add("Musica");
         }
+
 
         if(cbArte.isChecked()){
-            intereses += "Arte ";
+            intereses.add("Arte");
         }
+
 
         if(cbTecnologia.isChecked()){
-            intereses += "Tecnologia ";
+            intereses.add("Tecnologia");
         }
 
+
         return intereses;
+
     }
     private String obtenerNivelEstudio() {
 
@@ -155,4 +174,76 @@ public class MasDatosDeContacto extends AppCompatActivity {
             }
 
     }
+
+    private void guardarContactoBD(){
+
+
+        SQLiteDatabase db =
+                dbHelper.getWritableDatabase();
+
+
+
+        ContentValues valores =
+                new ContentValues();
+
+        valores.put("nombre", nombre);
+
+        valores.put("apellido", apellido);
+
+        valores.put("telefono", telefono);
+
+        valores.put("tipoTelefono", tipoTelefono);
+
+        valores.put("email", email);
+
+        valores.put("tipoEmail", tipoEmail);
+
+        valores.put("direccion", direccion);
+
+        valores.put("fechaNacimiento", fechaNacimiento);
+
+
+
+        valores.put(
+                "nivelEstudios",
+                obtenerNivelEstudio()
+        );
+
+
+
+        valores.put(
+                "recibeInformacion",
+                switchSiNo.isChecked() ? 1 : 0
+        );
+
+
+
+        valores.put(
+                "intereses",
+                obtenerIntereses().toString()
+        );
+
+
+
+        db.insert(
+                "contactos",
+                null,
+                valores
+        );
+
+
+
+        db.close();
+
+
+
+        Toast.makeText(
+                this,
+                "Contacto guardado correctamente",
+                Toast.LENGTH_SHORT
+        ).show();
+
+
+    }
+
 }
